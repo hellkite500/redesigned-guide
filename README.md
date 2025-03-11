@@ -13,6 +13,7 @@ positional arguments:
 
 options:
   --ghost, -g           Include the downstream flowpath in the extracted elements
+  --output-dir, -o      The output directory used to for saving the geospatial boundary subsets and/or plots
 
 Shapefile Arguments:
   boundaries            Path to file containing boundaries to use

@@ -228,6 +228,7 @@ if __name__ == "__main__":
     plt_group.add_argument('--save', '-s', action='store_true', help='Save the plot to a file')
     plt_group.add_argument('--interactive', '-I', action='store_true', help='Use interactive plotting')
     parser.add_argument('--ghost', '-g', action='store_true', help='Include the downstream flowpath in the extracted elements')
+    parser.add_argument('--output-dir', '-o', type=str, help='The output directory used to for saving the geospatial boundary subsets and/or plots')
     args = parser.parse_args()
 
     shp = args.boundaries
@@ -238,6 +239,12 @@ if __name__ == "__main__":
         _to_open = _s3.open(str(gpkg).replace("s3:/", "s3://"))
     else:
         _to_open = gpkg
+        
+    if args.output_dir is not None:
+        output_dir = Path(args.output_dir)
+        output_dir.mkdir(exist_ok=True)
+    else:
+        output_dir = Path("./")
 
     # use_arrow here makes these reads 2-3x faster, especially for
     # reading the network table
@@ -293,4 +300,4 @@ if __name__ == "__main__":
         print()
         # Write to a new geopackage
         for table, layer in all.items():
-            gpd.GeoDataFrame(layer).to_file(f"{name}_{terminal_nexus}.gpkg", layer=table, driver='GPKG')
+            gpd.GeoDataFrame(layer).to_file(output_dir / f"{name}_{terminal_nexus}.gpkg", layer=table, driver='GPKG')
