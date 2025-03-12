@@ -9,27 +9,37 @@ Extract NextGen Hydrofbric Elements from Shapefile Geometries. Currently only su
 
 
 positional arguments:
-  gpkg                  Path to geopackage (may be a valid s3 path)
+
+   `gpkg`                  Path to geopackage (may be a valid s3 path)
 
 options:
-  --ghost, -g           Include the downstream flowpath in the extracted elements
-  --output-dir, -o      The output directory used to for saving the geospatial boundary subsets and/or plots
+
+   `--ghost`, `-g`           Include the downstream flowpath in the extracted elements
+
+   `--output-dir`, `-o`      The output directory used to for saving the geospatial boundary subsets and/or plots
 
 Shapefile Arguments:
-  boundaries            Path to file containing boundaries to use
-  -f FIELD, --field FIELD
+
+   `boundaries`          Path to file containing boundaries to use
+  
+   `-f FIELD`, `--field FIELD`
                         Field to use for boundary selection and/or naming
-  -i [IDS ...], --ids [IDS ...]
+
+   `-i [IDS ...]`, `--ids [IDS ...]`
                         Ids to use for boundary selection
   
 >[!NOTE] 
 >If IDS are not provided, then this utility will iterate over all geometries in the shapefile, naming each output based on the FIELD value assoicated with that geometry.
 
 Plotting Arguments:
-  --plot, -p            Plot the extracted elements
-  --plot-wide, -w       Plot the extracted elements with a wider view (the bounding box of the boundary geometry being processed)
-  --save, -s            Save the plot to a file
-  --interactive, -I     Use interactive plotting
+
+  `--plot`, `-p`            Plot the extracted elements
+
+  `--plot-wide`, `-w`       Plot the extracted elements with a wider view (the bounding box of the boundary geometry being processed)
+  
+  `--save`, `-s`            Save the plot to a file
+  
+  `--interactive`, `-I`     Use interactive plotting
 
 >[!NOTE]
 >If interactive plotting, the resulting subset will be displayed for each geometry being processed.  Once the plot is closed, then the utility will proceed to the next.
