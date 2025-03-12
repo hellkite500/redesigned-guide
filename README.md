@@ -7,6 +7,21 @@ Extract NextGen Hydrofbric Elements from Shapefile Geometries. Currently only su
 - The geometries in the given shapefile should be contained in the overal extent of the gpkg used to subset from.
 - The geometries in the given shapefil must *cross* the flowpath network geometries.
 
+## Usage
+The progress of each feature is reported during processing, the output will include the percentage of the total boundary area covered by the computed subset.
+
+- Less than 100% indicates the subset area is smaller than the boundary
+- Greater than 100% indicates the subset area is larger than the boundary.
+
+When complete, the hydrofabric subset will be written to a geopackage with a name derived from the boundary identifier (see the IDS below) and the computed terminal nexus of the subset into outputfiles like
+
+`<id>_<terminal_nexus>.gpkg`
+
+```console
+usage: boundary_subset.py [-h] -f FIELD [-i [IDS ...]] [--plot] [--plot-wide] [--save]
+                          [--interactive] [--ghost] [--output-dir OUTPUT_DIR]
+                          boundaries gpkg
+```
 
 positional arguments:
 
